@@ -1,0 +1,15 @@
+[gd_scene format=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextEdit" type="TextEdit" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 53.0
+highlight_current_line = true
+override_selected_font_color = true
+smooth_scrolling = true
+wrap_enabled = true
+caret_block_mode = true
