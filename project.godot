@@ -15,10 +15,14 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Writer"
+config/name="Writee - Loading..."
 boot_splash/image="res://Luneal Labs.png"
 boot_splash/bg_color=Color( 1, 1, 1, 1 )
 config/icon="res://icon.png"
+
+[autoload]
+
+GLOBAL="*res://GLOBAL.gd"
 
 [debug]
 
@@ -38,7 +42,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "sprite_quick_offset" )
+enabled=PoolStringArray( "notes_tab", "sprite_quick_offset" )
 
 [rendering]
 

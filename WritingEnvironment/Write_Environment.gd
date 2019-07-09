@@ -13,7 +13,7 @@ func _on_FileMenu_pressed(id):
 			$FileMenu/SaveAsFile.popup()
 		#Quit
 		2:
-			get_tree().quit()
+			GLOBAL._quit()
 
 
 #func _on_Open_pressed():

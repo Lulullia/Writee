@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Write_Environment.gd" type="Script" id=1]
+[ext_resource path="res://WritingEnvironment/Write_Environment.gd" type="Script" id=1]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -20,22 +20,6 @@ override_selected_font_color = true
 smooth_scrolling = true
 wrap_enabled = true
 caret_block_mode = true
-
-[node name="Open" type="Button" parent="."]
-visible = false
-margin_left = 331.0
-margin_top = 18.0
-margin_right = 582.0
-margin_bottom = 48.0
-text = "Open File"
-
-[node name="SaveAs" type="Button" parent="."]
-visible = false
-margin_left = 54.0
-margin_top = 17.0
-margin_right = 311.0
-margin_bottom = 46.0
-text = "Save File As"
 
 [node name="FileMenu" type="MenuButton" parent="."]
 margin_left = 13.3615
@@ -67,7 +51,5 @@ margin_bottom = 583.357
 access = 2
 current_dir = "D:/Nora/Documents/!LUNEAL LABS/Writer/Writee"
 current_path = "D:/Nora/Documents/!LUNEAL LABS/Writer/Writee/"
-[connection signal="pressed" from="Open" to="." method="_on_Open_pressed"]
-[connection signal="pressed" from="SaveAs" to="." method="_on_Save_pressed"]
 [connection signal="file_selected" from="FileMenu/OpenFile" to="." method="_on_OpenFile_file_selected"]
 [connection signal="file_selected" from="FileMenu/SaveAsFile" to="." method="_on_SaveAsFile_file_selected"]
