@@ -4,6 +4,8 @@ extends Node
 ###VARIABLES###
 ###############
 
+onready var Manus_text_env = get_node("/root/Main/Write_Environment/TextEdit")
+
 var app_name = "Writee"
 
 var current_filename = "Untitled"
