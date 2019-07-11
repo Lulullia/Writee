@@ -1,25 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://MainUI/MainUI.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/GlassAntiqua-Regular.ttf" type="DynamicFontData" id=2]
-
-[sub_resource type="DynamicFont" id=1]
-size = 25
-font_data = ExtResource( 2 )
-
-[sub_resource type="Theme" id=2]
-default_font = SubResource( 1 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 30
-font_data = ExtResource( 2 )
+[ext_resource path="res://Assets/themes/Pink_Theme.tres" type="Theme" id=1]
+[ext_resource path="res://MainUI/MainUI.gd" type="Script" id=2]
 
 [node name="MainUI" type="Control"]
 anchor_right = 1.0
-anchor_bottom = 1.0
-margin_bottom = -732.0
 rect_pivot_offset = Vector2( -740, 190 )
-script = ExtResource( 1 )
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="Margin" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -32,14 +20,11 @@ custom_constants/margin_left = 30
 margin_left = 30.0
 margin_top = 20.0
 margin_right = 1186.0
-margin_bottom = 58.0
+margin_bottom = 61.0
 
 [node name="File" type="MenuButton" parent="Margin/Menus"]
-margin_right = 51.0
-margin_bottom = 38.0
-theme = SubResource( 2 )
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color_hover = Color( 0.705882, 0.705882, 0.705882, 1 )
+margin_right = 47.0
+margin_bottom = 41.0
 text = "File"
 align = 0
 items = [ "New", null, 0, false, false, -1, 0, null, "", false, "Open", null, 0, false, false, -1, 0, null, "", false, "Save", null, 0, false, false, -1, 0, null, "", false, "Save As", null, 0, false, false, -1, 0, null, "", false, "Quit", null, 0, false, false, -1, 0, null, "", false ]
@@ -74,5 +59,12 @@ rect_pivot_offset = Vector2( 396.5, 274.5 )
 access = 2
 current_dir = "D:/Nora/Documents/!LUNEAL LABS/Writer/Writee"
 current_path = "D:/Nora/Documents/!LUNEAL LABS/Writer/Writee/"
+
+[node name="Project" type="MenuButton" parent="Margin/Menus"]
+margin_left = 51.0
+margin_right = 126.0
+margin_bottom = 41.0
+text = "Project"
+switch_on_hover = true
 [connection signal="file_selected" from="Margin/Menus/File/Open" to="." method="_on_Open_file_selected"]
 [connection signal="file_selected" from="Margin/Menus/File/SaveAs" to="." method="_on_SaveAs_file_selected"]

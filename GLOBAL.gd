@@ -4,11 +4,13 @@ extends Node
 ###VARIABLES###
 ###############
 
+const UNTITLED = "Untitled"
+
 onready var Manus_text_env = get_node("/root/Main/Write_Environment/TextEdit")
 
 var app_name = "Writee"
 
-var current_filename = "Untitled"
+var current_filename = UNTITLED
 var current_filepath
 
 var previous_filename = []

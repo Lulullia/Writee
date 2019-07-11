@@ -9,13 +9,12 @@ margin_top = 65.0
 script = ExtResource( 1 )
 
 [node name="TextEdit" type="TextEdit" parent="."]
-anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 17.0
-margin_top = -747.0
-margin_right = -17.0
-margin_bottom = -38.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = -30.0
 text = "Default"
 highlight_current_line = true
 override_selected_font_color = true
