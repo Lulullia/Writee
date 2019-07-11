@@ -38,13 +38,14 @@ func _quit():
 	
 	#Add a "do you want to save" reminder
 	
-	previous_filename.push_front(current_filename)
-	previous_filepath.push_front(current_filepath)
+	if current_filepath:
+		previous_filename.push_front(current_filename)
+		previous_filepath.push_front(current_filepath)
 	
-	var system = File.new()
-	system.open("user/system.wrt", 2)
-	system.store_line(to_json(previous_filename))
-	system.store_line(to_json(previous_filepath))
-	system.close()
+		var system = File.new()
+		system.open("user/system.wrt", 2)
+		system.store_line(to_json(previous_filename))
+		system.store_line(to_json(previous_filepath))
+		system.close()
 	
 	get_tree().quit()

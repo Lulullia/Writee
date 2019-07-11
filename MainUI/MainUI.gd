@@ -30,7 +30,6 @@ func _apply_shortcuts():
 			inputevent.set_scancode(scancode)
 			shortcut.set_shortcut(inputevent)
 			file_menu.get_popup().set_item_shortcut(action, shortcut, true)
-			print(action, shortcut)
 
 
 func _on_FileMenu_pressed(id):
