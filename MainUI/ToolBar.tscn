@@ -1,0 +1,256 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/themes/Pink_Theme.tres" type="Theme" id=1]
+[ext_resource path="res://MainUI/ToolBarScript.gd" type="Script" id=2]
+[ext_resource path="res://Assets/fonts/Slopes.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/png/minus.png" type="Texture" id=4]
+[ext_resource path="res://Assets/png/larger.png" type="Texture" id=5]
+[ext_resource path="res://Assets/png/cross.png" type="Texture" id=6]
+[ext_resource path="res://Assets/fonts/Crushed-Regular.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 33
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 7 )
+
+[node name="ToolBar" type="HBoxContainer"]
+anchor_right = 1.0
+margin_bottom = 38.0
+mouse_filter = 0
+theme = ExtResource( 1 )
+alignment = 2
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="WindowTitle" type="Label" parent="."]
+margin_left = 522.0
+margin_right = 598.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+rect_pivot_offset = Vector2( 46, 20 )
+mouse_filter = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Writee"
+align = 1
+valign = 1
+
+[node name="VSeparator5" type="VSeparator" parent="."]
+margin_left = 602.0
+margin_right = 642.0
+margin_bottom = 50.0
+mouse_filter = 1
+custom_styles/separator = SubResource( 2 )
+custom_constants/separation = 40
+
+[node name="Slash" type="Label" parent="."]
+margin_left = 646.0
+margin_top = 8.0
+margin_right = 652.0
+margin_bottom = 42.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "I"
+align = 1
+valign = 2
+
+[node name="VSeparator6" type="VSeparator" parent="."]
+margin_left = 656.0
+margin_right = 696.0
+margin_bottom = 50.0
+mouse_filter = 1
+custom_styles/separator = SubResource( 2 )
+custom_constants/separation = 40
+
+[node name="DocTitle" type="Label" parent="."]
+margin_left = 700.0
+margin_right = 787.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+rect_pivot_offset = Vector2( 46, 20 )
+mouse_filter = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Untitled"
+align = 1
+valign = 1
+max_lines_visible = 1
+
+[node name="VSeparator4" type="VSeparator" parent="."]
+margin_left = 791.0
+margin_right = 1091.0
+margin_bottom = 50.0
+mouse_filter = 1
+custom_styles/separator = SubResource( 2 )
+custom_constants/separation = 300
+
+[node name="Minimize" type="ToolButton" parent="."]
+margin_left = 1095.0
+margin_right = 1125.0
+margin_bottom = 50.0
+focus_mode = 0
+mouse_filter = 1
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+icon = ExtResource( 4 )
+clip_text = true
+
+[node name="VSeparator3" type="VSeparator" parent="."]
+margin_left = 1129.0
+margin_right = 1130.0
+margin_bottom = 50.0
+mouse_filter = 1
+custom_styles/separator = SubResource( 2 )
+custom_constants/separation = 1
+
+[node name="Fullscreen" type="ToolButton" parent="."]
+margin_left = 1134.0
+margin_right = 1164.0
+margin_bottom = 50.0
+focus_mode = 0
+mouse_filter = 1
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+icon = ExtResource( 5 )
+clip_text = true
+
+[node name="VSeparator2" type="VSeparator" parent="."]
+margin_left = 1168.0
+margin_right = 1169.0
+margin_bottom = 50.0
+mouse_filter = 1
+custom_styles/separator = SubResource( 2 )
+custom_constants/separation = 1
+
+[node name="Close" type="ToolButton" parent="."]
+editor/display_folded = true
+margin_left = 1173.0
+margin_right = 1203.0
+margin_bottom = 50.0
+focus_mode = 0
+mouse_filter = 1
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+icon = ExtResource( 6 )
+clip_text = true
+
+[node name="QuitConfirm" type="WindowDialog" parent="Close"]
+editor/display_folded = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -101.0
+margin_top = -60.0
+margin_right = 101.0
+margin_bottom = 60.0
+theme = ExtResource( 1 )
+popup_exclusive = true
+
+[node name="QuitYes" type="Button" parent="Close/QuitConfirm"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 21.0
+margin_top = -65.0
+margin_right = 84.0
+margin_bottom = -24.0
+text = "Yes"
+
+[node name="QuitNo" type="Button" parent="Close/QuitConfirm"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -83.0
+margin_top = -65.0
+margin_right = -19.0
+margin_bottom = -24.0
+text = "No"
+
+[node name="Label" type="Label" parent="Close/QuitConfirm"]
+anchor_right = 1.0
+margin_top = 10.0
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 3 )
+text = "Quit ?"
+align = 1
+valign = 1
+
+[node name="SaveConfirm" type="WindowDialog" parent="Close"]
+editor/display_folded = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -101.0
+margin_top = -60.0
+margin_right = 101.0
+margin_bottom = 85.0
+theme = ExtResource( 1 )
+popup_exclusive = true
+
+[node name="SaveYes" type="Button" parent="Close/SaveConfirm"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 22.0
+margin_top = -91.0
+margin_right = 85.0
+margin_bottom = -50.0
+text = "Yes"
+
+[node name="SaveNo" type="Button" parent="Close/SaveConfirm"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -84.0
+margin_top = -91.0
+margin_right = -20.0
+margin_bottom = -50.0
+text = "No"
+
+[node name="SaveCancel" type="Button" parent="Close/SaveConfirm"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -35.0
+margin_top = 25.5
+margin_right = 35.0
+margin_bottom = 66.5
+text = "Cancel"
+
+[node name="Label" type="Label" parent="Close/SaveConfirm"]
+anchor_right = 1.0
+margin_top = 10.0
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 3 )
+text = "Save ?"
+align = 1
+valign = 1
+
+[node name="VSeparator" type="VSeparator" parent="."]
+margin_left = 1207.0
+margin_right = 1216.0
+margin_bottom = 50.0
+mouse_filter = 1
+custom_styles/separator = SubResource( 2 )
+custom_constants/separation = 9
+[connection signal="gui_input" from="." to="." method="_on_ToolBar_gui_input"]
+[connection signal="pressed" from="Minimize" to="." method="_on_Minimize_pressed"]
+[connection signal="toggled" from="Fullscreen" to="." method="_on_Fullscreen_toggled"]
+[connection signal="pressed" from="Close" to="." method="_on_Close_pressed"]
+[connection signal="pressed" from="Close/QuitConfirm/QuitYes" to="." method="_on_QuitYes_pressed"]
+[connection signal="pressed" from="Close/QuitConfirm/QuitNo" to="." method="_on_QuitNo_pressed"]
+[connection signal="pressed" from="Close/SaveConfirm/SaveYes" to="." method="_on_SaveYes_pressed"]
+[connection signal="pressed" from="Close/SaveConfirm/SaveNo" to="." method="_on_SaveNo_pressed"]
+[connection signal="pressed" from="Close/SaveConfirm/SaveCancel" to="." method="_on_SaveCancel_pressed"]

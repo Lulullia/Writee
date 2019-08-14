@@ -5,37 +5,36 @@
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
-[node name="MainUI" type="Control"]
+[node name="MainUI" type="MarginContainer"]
 anchor_right = 1.0
-rect_pivot_offset = Vector2( -740, 190 )
+margin_bottom = 43.0
+mouse_filter = 2
 theme = ExtResource( 1 )
+custom_constants/margin_right = 30
+custom_constants/margin_top = 10
+custom_constants/margin_left = 30
+custom_constants/margin_bottom = 10
 script = ExtResource( 2 )
 
-[node name="Margin" type="MarginContainer" parent="."]
-anchor_right = 1.0
-margin_bottom = 43.0
-custom_constants/margin_right = 30
-custom_constants/margin_top = 20
-custom_constants/margin_left = 30
-
-[node name="Menus" type="HBoxContainer" parent="Margin"]
+[node name="Menus" type="HBoxContainer" parent="."]
 margin_left = 30.0
-margin_top = 20.0
+margin_top = 10.0
 margin_right = 131.0
-margin_bottom = 43.0
+margin_bottom = 33.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="File" type="MenuButton" parent="Margin/Menus"]
+[node name="File" type="MenuButton" parent="Menus"]
 margin_right = 27.0
 margin_bottom = 23.0
+mouse_default_cursor_shape = 2
 shortcut_in_tooltip = false
 text = "File"
 align = 0
 items = [ "New", null, 0, false, false, -1, 0, null, "", false, "Open", null, 0, false, false, -1, 0, null, "", false, "Save", null, 0, false, false, -1, 0, null, "", false, "Save As", null, 0, false, false, -1, 0, null, "", false, "Quit", null, 0, false, false, -1, 0, null, "", false ]
 switch_on_hover = true
 
-[node name="Open" type="FileDialog" parent="Margin/Menus/File"]
+[node name="Open" type="FileDialog" parent="Menus/File"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -51,7 +50,7 @@ access = 2
 current_dir = "D:/Nora/Documents/!LUNEAL LABS/Writer/Writee"
 current_path = "D:/Nora/Documents/!LUNEAL LABS/Writer/Writee/"
 
-[node name="SaveAs" type="FileDialog" parent="Margin/Menus/File"]
+[node name="SaveAs" type="FileDialog" parent="Menus/File"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -65,20 +64,19 @@ access = 2
 current_dir = "D:/Nora/Documents/!LUNEAL LABS/Writer/Writee"
 current_path = "D:/Nora/Documents/!LUNEAL LABS/Writer/Writee/"
 
-[node name="VSeparator" type="VSeparator" parent="Margin/Menus"]
+[node name="VSeparator" type="VSeparator" parent="Menus"]
 margin_left = 31.0
 margin_right = 42.0
 margin_bottom = 23.0
 custom_styles/separator = SubResource( 1 )
 custom_constants/separation = 11
 
-[node name="Project" type="MenuButton" parent="Margin/Menus"]
+[node name="Project" type="MenuButton" parent="Menus"]
 margin_left = 46.0
 margin_right = 101.0
 margin_bottom = 23.0
+mouse_default_cursor_shape = 2
 shortcut_in_tooltip = false
 text = "Project"
 align = 0
 switch_on_hover = true
-[connection signal="file_selected" from="Margin/Menus/File/Open" to="." method="_on_Open_file_selected"]
-[connection signal="file_selected" from="Margin/Menus/File/SaveAs" to="." method="_on_SaveAs_file_selected"]

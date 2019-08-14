@@ -1,12 +1,15 @@
 extends Node
 
+###SIGNALS###
+signal saved
+
 ###############
 ###VARIABLES###
 ###############
 
 const UNTITLED = "Untitled"
 
-onready var Manus_text_env = get_node("/root/Main/Write_Environment/TextEdit")
+onready var Manus_text_env = get_node("/root/Main/Text/Write_Environment/TextEdit")
 
 var app_name = "Writee"
 
@@ -19,18 +22,22 @@ var previous_filepath = []
 #Init
 func _ready():
 	
-	_update_window_title()
+	
+	Input.set_custom_mouse_cursor(load("res://Assets/png/cursor_pointer3D.png"), Input.CURSOR_POINTING_HAND)
 	
 	var system = File.new()
 	system.open("user/system.wrt", 1)
-	previous_filename = parse_json(system.get_line())
-	previous_filepath = parse_json(system.get_line())
+#	previous_filename = parse_json(system.get_line())
+#	previous_filepath = parse_json(system.get_line())
+	system.close()
 	print(previous_filename)
 	print(previous_filepath)
 
 
-func _update_window_title():
-	OS.set_window_title(app_name + " - " + current_filename)
+#Saving
+func _save():
+	print("saving")
+	emit_signal("saved")
 
 
 #Quitting

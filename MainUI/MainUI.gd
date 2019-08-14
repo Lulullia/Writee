@@ -1,6 +1,6 @@
 extends Control
 
-onready var file_menu = get_node("Margin/Menus/File")
+onready var file_menu = get_node("Menus/File")
 
 func _ready():
 	file_menu.get_popup().connect("id_pressed", self, "_on_FileMenu_pressed")
@@ -41,7 +41,7 @@ func _on_FileMenu_pressed(id):
 			GLOBAL.Manus_text_env.text = ""
 		#Open
 		1:
-			$Margin/Menus/File/Open.popup()
+			$Menus/File/Open.popup()
 		#Save
 		2:
 			if GLOBAL.current_filepath:
@@ -50,10 +50,10 @@ func _on_FileMenu_pressed(id):
 				file.store_string(GLOBAL.Manus_text_env.text)
 				file.close()
 			else:
-				$Margin/Menus/File/SaveAs.popup()
+				$Menus/File/SaveAs.popup()
 		#Save As
 		3:
-			$Margin/Menus/File/SaveAs.popup()
+			$Menus/File/SaveAs.popup()
 		#Quit
 		4:
 			GLOBAL._quit()

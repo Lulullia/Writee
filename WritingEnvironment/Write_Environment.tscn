@@ -1,26 +1,136 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/themes/Pink_Theme.tres" type="Theme" id=1]
 [ext_resource path="res://WritingEnvironment/Write_Environment.gd" type="Script" id=2]
+[ext_resource path="res://Assets/fonts/Crushed-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/fonts/Slopes.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/fonts/Dosis-ExtraLight.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Assets/fonts/Dosis-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Assets/fonts/Dosis-Light.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 7 )
 
 [node name="Write_Environment" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 65.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="TextEdit" type="TextEdit" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 30.0
 margin_top = 30.0
 margin_right = -30.0
 margin_bottom = -70.0
-text = "Default"
+focus_mode = 1
+readonly = true
 highlight_current_line = true
 override_selected_font_color = true
 smooth_scrolling = true
 wrap_enabled = true
 caret_blink = true
 caret_blink_speed = 0.42
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -567.0
+margin_top = -373.0
+margin_right = 566.0
+margin_bottom = 327.0
+custom_fonts/mono_font = SubResource( 1 )
+custom_fonts/bold_italics_font = SubResource( 2 )
+custom_fonts/italics_font = SubResource( 3 )
+custom_fonts/bold_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 5 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "Default"
+meta_underlined = false
+text = "Default"
+
+[node name="save" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -58.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = 47.0
+disabled = true
+text = "SAVE"
+
+[node name="image" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -156.0
+margin_top = 6.0
+margin_right = -66.0
+margin_bottom = 47.0
+disabled = true
+text = "ADD IMAGE"
+
+[node name="bold" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -456.0
+margin_top = 6.0
+margin_right = -366.0
+margin_bottom = 47.0
+disabled = true
+text = "BOLD"
+
+[node name="italic" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -356.0
+margin_top = 6.0
+margin_right = -266.0
+margin_bottom = 47.0
+disabled = true
+text = "ITALIC"
+
+[node name="underline" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -256.0
+margin_top = 6.0
+margin_right = -166.0
+margin_bottom = 47.0
+disabled = true
+text = "UNDERLINE"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -505.0
+margin_top = -331.0
+margin_right = 506.0
+margin_bottom = 259.0
+window_title = "Open a File"
+mode = 0
+[connection signal="gui_input" from="RichTextLabel" to="." method="_on_RichTextLabel_gui_input"]
+[connection signal="pressed" from="save" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="image" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="bold" to="." method="_on_bold_pressed"]
+[connection signal="pressed" from="italic" to="." method="_on_italic_pressed"]
+[connection signal="pressed" from="underline" to="." method="_on_underline_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
