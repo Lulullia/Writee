@@ -28,10 +28,9 @@ size_flags_vertical = 0
 margin_right = 27.0
 margin_bottom = 23.0
 mouse_default_cursor_shape = 2
-shortcut_in_tooltip = false
 text = "File"
 align = 0
-items = [ "New", null, 0, false, false, -1, 0, null, "", false, "Open", null, 0, false, false, -1, 0, null, "", false, "Save", null, 0, false, false, -1, 0, null, "", false, "Save As", null, 0, false, false, -1, 0, null, "", false, "Quit", null, 0, false, false, -1, 0, null, "", false ]
+items = [ "New", null, 0, false, false, -1, 0, null, "", false, "Open", null, 0, false, false, -1, 0, null, "", false, "Save", null, 0, false, false, -1, 0, null, "", false, "Save As", null, 0, false, false, -1, 0, null, "", false, "Close", null, 0, false, false, -1, 0, null, "", false ]
 switch_on_hover = true
 
 [node name="Open" type="FileDialog" parent="Menus/File"]
@@ -80,3 +79,5 @@ shortcut_in_tooltip = false
 text = "Project"
 align = 0
 switch_on_hover = true
+[connection signal="file_selected" from="Menus/File/Open" to="." method="_on_Open_file_selected"]
+[connection signal="file_selected" from="Menus/File/SaveAs" to="." method="_on_SaveAs_file_selected"]

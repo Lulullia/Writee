@@ -1,6 +1,14 @@
 extends Control
 
-var actual_text
+var actual_text setget set_actual_text, get_actual_text
+
+func set_actual_text(value):
+	actual_text = value
+	$TextEdit.set_text(value)
+	$RichTextLabel.bbcode_text = value
+
+func get_actual_text():
+	return actual_text
 
 func _ready():
 	$FileDialog.set_filters(PoolStringArray(["*.png ; PGN Images","*.jpg ; JPG Images","*.jpeg ; JPEG Images"]))
@@ -55,11 +63,32 @@ func _on_bold_pressed():
 	actual_text = $TextEdit.text
 
 
-#func _on_italic_pressed():
-#	$TextEdit.insert_text_at_cursor("[img]"+path+"[/img]")
-#	actual_text = $TextEdit.text
-#
-#
-#func _on_underline_pressed():
-#	$TextEdit.insert_text_at_cursor("[img]"+path+"[/img]")
-#	actual_text = $TextEdit.text
+func _on_italic_pressed():
+	
+	var text
+	
+	if $TextEdit.is_selection_active():
+		text = $TextEdit.get_selection_text()
+		$TextEdit.cut()
+	else:
+		text = ""
+	$TextEdit.insert_text_at_cursor("[i]"+text+"[/i]")
+	actual_text = $TextEdit.text
+
+
+func _on_underline_pressed():
+	
+	var text
+	
+	if $TextEdit.is_selection_active():
+		text = $TextEdit.get_selection_text()
+		$TextEdit.cut()
+	else:
+		text = ""
+	$TextEdit.insert_text_at_cursor("[u]"+text+"[/u]")
+	actual_text = $TextEdit.text
+
+
+func _on_SpinBox_value_changed(value):
+	for font in ["mono_font", "bold_italics_font", "bold_font", "italics_font", "normal_font"]:
+		$RichTextLabel.get_font(font).set_size(value)

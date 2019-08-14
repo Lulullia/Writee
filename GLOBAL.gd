@@ -1,29 +1,20 @@
 extends Node
 
-###SIGNALS###
-signal saved
 
 ###############
 ###VARIABLES###
 ###############
 
-const UNTITLED = "Untitled"
-
-onready var Manus_text_env = get_node("/root/Main/Text/Write_Environment/TextEdit")
-
 var app_name = "Writee"
 
-var current_filename = UNTITLED
-var current_filepath
+var current_filename = "Untitled" setget set_current_filename, get_current_filename
+var current_filepath setget set_current_filename, get_current_filepath
 
 var previous_filename = []
 var previous_filepath = []
 
 #Init
 func _ready():
-	
-	
-	Input.set_custom_mouse_cursor(load("res://Assets/png/cursor_pointer3D.png"), Input.CURSOR_POINTING_HAND)
 	
 	var system = File.new()
 	system.open("user/system.wrt", 1)
@@ -33,17 +24,26 @@ func _ready():
 	print(previous_filename)
 	print(previous_filepath)
 
+#Input
+func _input(event):
+	
+	if event is InputEventKey:
+		if event.pressed && event.scancode == 83 && Input.is_action_pressed("save"):
+			_save(false)
 
 #Saving
-func _save():
+func _save(quitting):
+	#Save code
 	print("saving")
-	emit_signal("saved")
+	#When save is complete
+	if quitting:
+		_quit()
+	else:
+		pass
 
 
 #Quitting
 func _quit():
-	
-	#Add a "do you want to save" reminder
 	
 	if current_filepath:
 		previous_filename.push_front(current_filename)
@@ -56,3 +56,16 @@ func _quit():
 		system.close()
 	
 	get_tree().quit()
+
+###SETTERS & GETTERS###
+
+func set_current_filename(value):
+	current_filename = value
+func get_current_filename():
+	return current_filename
+
+func set_current_filepath(value):
+	current_filepath = value
+func get_current_filepath():
+	return current_filepath
+

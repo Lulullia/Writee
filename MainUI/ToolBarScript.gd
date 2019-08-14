@@ -7,8 +7,8 @@ var drag_start_pos = Vector2()
 
 
 ###FUNCTIONS###
-#func _ready():
-#	_update_window_title()
+func _ready():
+	_update_window_title()
 
 func _process(delta):
 	
@@ -55,10 +55,7 @@ func _on_QuitNo_pressed():
 func _on_SaveNo_pressed():
 	GLOBAL._quit()
 func _on_SaveYes_pressed():
-	GLOBAL._save()
-	yield(GLOBAL, "saved")
-	$Close/SaveConfirm.hide()
-	GLOBAL._quit()
+	GLOBAL._save(true)
 func _on_SaveCancel_pressed():
 	$Close/SaveConfirm.hide()
 
