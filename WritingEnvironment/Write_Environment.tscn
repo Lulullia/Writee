@@ -73,7 +73,9 @@ margin_bottom = 47.0
 disabled = true
 text = "SAVE"
 
-[node name="image" type="Button" parent="."]
+[node name="image" type="Button" parent="." groups=[
+"edition_buttons",
+]]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -156.0
@@ -83,7 +85,9 @@ margin_bottom = 47.0
 disabled = true
 text = "ADD IMAGE"
 
-[node name="bold" type="Button" parent="."]
+[node name="bold" type="Button" parent="." groups=[
+"edition_buttons",
+]]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -456.0
@@ -93,7 +97,9 @@ margin_bottom = 47.0
 disabled = true
 text = "BOLD"
 
-[node name="italic" type="Button" parent="."]
+[node name="italic" type="Button" parent="." groups=[
+"edition_buttons",
+]]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -356.0
@@ -103,7 +109,9 @@ margin_bottom = 47.0
 disabled = true
 text = "ITALIC"
 
-[node name="underline" type="Button" parent="."]
+[node name="underline" type="Button" parent="." groups=[
+"edition_buttons",
+]]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -256.0
@@ -130,8 +138,9 @@ margin_left = 667.895
 margin_top = 14.5754
 margin_right = 739.895
 margin_bottom = 39.5754
-min_value = 10.0
-value = 10.0
+min_value = 1.0
+max_value = 200.0
+value = 20.0
 rounded = true
 [connection signal="gui_input" from="RichTextLabel" to="." method="_on_RichTextLabel_gui_input"]
 [connection signal="pressed" from="save" to="." method="_on_Button_pressed"]

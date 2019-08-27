@@ -17,7 +17,7 @@ func _process(delta):
 							get_global_mouse_position() - drag_start_pos)
 
 func _update_window_title():
-	$DocTitle.text = GLOBAL.current_filename
+	$DocTitle.set_deferred("text", GLOBAL.current_filename)
 
 
 ###SIGNAL FUNCTIONS###
@@ -35,28 +35,28 @@ func _on_Minimize_pressed():
 func _on_Fullscreen_toggled(button_pressed):
 	if button_pressed:
 		OS.window_fullscreen = true
-		$Fullscreen.icon = load("res://Assets/png/smaller.png")
+		$Fullscreen.set_deferred("icon", load("res://Assets/png/smaller.png"))
 	if !button_pressed:
-		$Fullscreen.icon = load("res://Assets/png/larger.png")
+		$Fullscreen.set_deferred("icon", load("res://Assets/png/larger.png"))
 		OS.window_fullscreen = false
 
 #Close
 func _on_Close_pressed():
 	if !GLOBAL.current_filepath:
-		$Close/SaveConfirm.popup()
+		$Close/SaveConfirm.call_deferred("popup")
 	else:
-		$Close/QuitConfirm.popup()
+		$Close/QuitConfirm.call_deferred("popup")
 
 func _on_QuitYes_pressed():
 	GLOBAL._quit()
 func _on_QuitNo_pressed():
-	$Close/QuitConfirm.hide()
+	$Close/QuitConfirm.call_deferred("hide")
 
 func _on_SaveNo_pressed():
 	GLOBAL._quit()
 func _on_SaveYes_pressed():
 	GLOBAL._save(true)
 func _on_SaveCancel_pressed():
-	$Close/SaveConfirm.hide()
+	$Close/SaveConfirm.call_deferred("hide")
 
 

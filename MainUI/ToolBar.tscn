@@ -8,9 +8,9 @@
 [ext_resource path="res://Assets/png/cross.png" type="Texture" id=6]
 [ext_resource path="res://Assets/fonts/Crushed-Regular.ttf" type="DynamicFontData" id=7]
 
-[sub_resource type="StyleBoxEmpty" id=2]
+[sub_resource type="StyleBoxEmpty" id=1]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 33
 font_data = ExtResource( 3 )
 
@@ -34,7 +34,7 @@ __meta__ = {
 margin_right = 30.0
 margin_bottom = 50.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 2 )
+custom_styles/separator = SubResource( 1 )
 custom_constants/separation = 30
 
 [node name="WindowTitle" type="Label" parent="."]
@@ -44,7 +44,7 @@ margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 rect_pivot_offset = Vector2( 46, 20 )
 mouse_filter = 1
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Writee"
 align = 1
@@ -55,7 +55,7 @@ margin_left = 114.0
 margin_right = 154.0
 margin_bottom = 50.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 2 )
+custom_styles/separator = SubResource( 1 )
 custom_constants/separation = 40
 
 [node name="Slash" type="Label" parent="."]
@@ -64,7 +64,7 @@ margin_top = 8.0
 margin_right = 164.0
 margin_bottom = 42.0
 mouse_filter = 1
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "I"
 align = 1
@@ -75,7 +75,7 @@ margin_left = 168.0
 margin_right = 208.0
 margin_bottom = 50.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 2 )
+custom_styles/separator = SubResource( 1 )
 custom_constants/separation = 40
 
 [node name="DocTitle" type="Label" parent="."]
@@ -86,7 +86,7 @@ rect_min_size = Vector2( 0, 50 )
 rect_pivot_offset = Vector2( 46, 20 )
 mouse_filter = 1
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Untitled"
 align = 1
@@ -98,7 +98,7 @@ margin_left = 791.0
 margin_right = 1091.0
 margin_bottom = 50.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 2 )
+custom_styles/separator = SubResource( 1 )
 custom_constants/separation = 300
 
 [node name="Minimize" type="ToolButton" parent="."]
@@ -118,7 +118,7 @@ margin_left = 1129.0
 margin_right = 1130.0
 margin_bottom = 50.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 2 )
+custom_styles/separator = SubResource( 1 )
 custom_constants/separation = 1
 
 [node name="Fullscreen" type="ToolButton" parent="."]
@@ -139,7 +139,7 @@ margin_left = 1168.0
 margin_right = 1169.0
 margin_bottom = 50.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 2 )
+custom_styles/separator = SubResource( 1 )
 custom_constants/separation = 1
 
 [node name="Close" type="ToolButton" parent="."]
@@ -255,7 +255,7 @@ margin_left = 1207.0
 margin_right = 1216.0
 margin_bottom = 50.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 2 )
+custom_styles/separator = SubResource( 1 )
 custom_constants/separation = 9
 [connection signal="gui_input" from="." to="." method="_on_ToolBar_gui_input"]
 [connection signal="pressed" from="Minimize" to="." method="_on_Minimize_pressed"]
