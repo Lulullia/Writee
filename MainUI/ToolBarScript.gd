@@ -9,6 +9,7 @@ var drag_start_pos = Vector2()
 ###FUNCTIONS###
 func _ready():
 	_update_window_title()
+	$AnimationPlayer.play("Toolbar")
 
 func _process(delta):
 	

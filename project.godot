@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Writee - Loading..."
+config/name="Writee"
 run/main_scene="res://Main.tscn"
 boot_splash/image="res://Luneal Labs.png"
 boot_splash/bg_color=Color( 0.945098, 0.945098, 0.945098, 1 )
@@ -69,5 +69,5 @@ left_click={
 
 [rendering]
 
-environment/default_clear_color=Color( 1, 0.823529, 0.968627, 1 )
+environment/default_clear_color=Color( 0.968627, 0.741176, 0.968627, 1 )
 environment/default_environment="res://default_env.tres"

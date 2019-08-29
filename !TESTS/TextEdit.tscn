@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://!TESTS/TextEdit.gd" type="Script" id=1]
+
+[node name="TextEdit" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="TextEdit2" type="TextEdit" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 31.0
+margin_top = 31.0
+margin_right = -31.0
+margin_bottom = -31.0
+show_line_numbers = true
+breakpoint_gutter = true
+override_selected_font_color = true
+hiding_enabled = 1
+
+[node name="Button" type="Button" parent="."]
+margin_left = 545.847
+margin_top = 4.27925
+margin_right = 642.847
+margin_bottom = 31.2793
+shortcut_in_tooltip = false
+text = "Hide Line"
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 658.758
+margin_top = 2.91887
+margin_right = 755.758
+margin_bottom = 29.9189
+shortcut_in_tooltip = false
+text = "Show Line"
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]

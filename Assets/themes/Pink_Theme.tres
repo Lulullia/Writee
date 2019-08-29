@@ -11,12 +11,13 @@
 [ext_resource path="res://Assets/png/interface_medium.png" type="Texture" id=9]
 [ext_resource path="res://Assets/png/forward.png" type="Texture" id=10]
 [ext_resource path="res://Assets/fonts/Slopes.ttf" type="DynamicFontData" id=11]
-[ext_resource path="res://Assets/fonts/Flamenco-Regular.ttf" type="DynamicFontData" id=12]
-[ext_resource path="res://Assets/fonts/Dosis-ExtraLight.ttf" type="DynamicFontData" id=13]
-[ext_resource path="res://Assets/png/down.png" type="Texture" id=14]
-[ext_resource path="res://Assets/png/down_2.png" type="Texture" id=15]
-[ext_resource path="res://Assets/png/scrollVertical.png" type="Texture" id=16]
-[ext_resource path="res://Assets/png/blank.png" type="Texture" id=17]
+[ext_resource path="res://Assets/png/cross.png" type="Texture" id=12]
+[ext_resource path="res://Assets/fonts/Flamenco-Regular.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://Assets/fonts/Dosis-ExtraLight.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://Assets/png/down.png" type="Texture" id=15]
+[ext_resource path="res://Assets/png/down_2.png" type="Texture" id=16]
+[ext_resource path="res://Assets/png/scrollVertical.png" type="Texture" id=17]
+[ext_resource path="res://Assets/png/blank.png" type="Texture" id=18]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -56,8 +57,7 @@ content_margin_left = 10.0
 content_margin_right = 10.0
 content_margin_top = 9.0
 content_margin_bottom = 9.0
-bg_color = Color( 0.913725, 0.266667, 0.556863, 0 )
-draw_center = false
+bg_color = Color( 1, 1, 1, 1 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -530,26 +530,16 @@ corner_detail = 10
 expand_margin_bottom = 3.0
 anti_aliasing = false
 
-[sub_resource type="DynamicFont" id=53]
+[sub_resource type="DynamicFont" id=84]
 size = 20
-font_data = ExtResource( 12 )
+font_data = ExtResource( 13 )
 
 [sub_resource type="StyleBoxFlat" id=54]
 content_margin_left = 12.0
-content_margin_right = 12.0
-content_margin_top = 12.0
+content_margin_right = 8.0
+content_margin_top = 17.0
 content_margin_bottom = 12.0
 bg_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-
-[sub_resource type="StyleBoxFlat" id=55]
-content_margin_left = 12.0
-content_margin_right = 12.0
-content_margin_top = 12.0
-content_margin_bottom = 12.0
-bg_color = Color( 1, 1, 1, 0.439216 )
-border_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 
@@ -574,7 +564,7 @@ draw_center = false
 [sub_resource type="StyleBoxEmpty" id=61]
 
 [sub_resource type="DynamicFont" id=62]
-font_data = ExtResource( 13 )
+font_data = ExtResource( 14 )
 
 [sub_resource type="StyleBoxFlat" id=63]
 content_margin_left = 4.0
@@ -780,7 +770,7 @@ font_data = ExtResource( 11 )
 default_font = SubResource( 83 )
 Button/colors/font_color = Color( 0.0784314, 0.0705882, 0.0705882, 1 )
 Button/colors/font_color_disabled = Color( 0.0784314, 0.0705882, 0.0705882, 1 )
-Button/colors/font_color_hover = Color( 0.0784314, 0.0705882, 0.0705882, 1 )
+Button/colors/font_color_hover = Color( 0.913725, 0.266667, 0.556863, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 7
 Button/fonts/font = SubResource( 1 )
@@ -791,7 +781,7 @@ Button/styles/normal = ExtResource( 2 )
 Button/styles/pressed = SubResource( 5 )
 CheckBox/colors/font_color = Color( 0.0784314, 0.0705882, 0.0705882, 1 )
 CheckBox/colors/font_color_disabled = Color( 0.0784314, 0.0705882, 0.0705882, 1 )
-CheckBox/colors/font_color_hover = Color( 0.0784314, 0.0705882, 0.0705882, 1 )
+CheckBox/colors/font_color_hover = Color( 0.913725, 0.266667, 0.556863, 1 )
 CheckBox/colors/font_color_hover_pressed = Color( 1, 1, 1, 1 )
 CheckBox/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 CheckBox/constants/check_vadjust = 6
@@ -981,7 +971,7 @@ Tabs/constants/label_valign_bg = 2
 Tabs/constants/label_valign_fg = 0
 Tabs/constants/top_margin = 24
 Tabs/fonts/font = SubResource( 46 )
-Tabs/icons/close = null
+Tabs/icons/close = ExtResource( 12 )
 Tabs/icons/decrement = null
 Tabs/icons/decrement_highlight = null
 Tabs/icons/increment = null
@@ -1019,11 +1009,11 @@ TextEdit/constants/completion_lines = 7
 TextEdit/constants/completion_max_width = 50
 TextEdit/constants/completion_scroll_width = 3
 TextEdit/constants/line_spacing = 6
-TextEdit/fonts/font = SubResource( 53 )
+TextEdit/fonts/font = SubResource( 84 )
 TextEdit/icons/tab = null
 TextEdit/styles/completion = null
 TextEdit/styles/focus = SubResource( 54 )
-TextEdit/styles/normal = SubResource( 55 )
+TextEdit/styles/normal = SubResource( 54 )
 TextEdit/styles/read_only = SubResource( 56 )
 ToolButton/colors/font_color = Color( 0.0784314, 0.0705882, 0.0705882, 1 )
 ToolButton/colors/font_color_disabled = Color( 0.0784314, 0.0705882, 0.0705882, 1 )
@@ -1062,12 +1052,12 @@ Tree/constants/scroll_speed = 12
 Tree/constants/vseparation = 6
 Tree/fonts/font = SubResource( 64 )
 Tree/fonts/title_button_font = SubResource( 65 )
-Tree/icons/arrow = ExtResource( 14 )
+Tree/icons/arrow = ExtResource( 15 )
 Tree/icons/arrow_collapsed = ExtResource( 10 )
 Tree/icons/checked = SubResource( 66 )
-Tree/icons/select_arrow = ExtResource( 15 )
+Tree/icons/select_arrow = ExtResource( 16 )
 Tree/icons/unchecked = SubResource( 67 )
-Tree/icons/updown = ExtResource( 16 )
+Tree/icons/updown = ExtResource( 17 )
 Tree/styles/bg = SubResource( 68 )
 Tree/styles/bg_focus = SubResource( 68 )
 Tree/styles/button_pressed = SubResource( 69 )
@@ -1111,6 +1101,6 @@ WindowDialog/constants/close_v_ofs = 22
 WindowDialog/constants/scaleborder_size = 4
 WindowDialog/constants/title_height = 40
 WindowDialog/fonts/title_font = SubResource( 81 )
-WindowDialog/icons/close = ExtResource( 17 )
-WindowDialog/icons/close_highlight = ExtResource( 17 )
+WindowDialog/icons/close = ExtResource( 18 )
+WindowDialog/icons/close_highlight = ExtResource( 18 )
 WindowDialog/styles/panel = SubResource( 82 )
