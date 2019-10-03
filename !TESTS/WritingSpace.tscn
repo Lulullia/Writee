@@ -1,0 +1,196 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/themes/Pink_Theme.tres" type="Theme" id=1]
+[ext_resource path="res://!TESTS/WritingSpace.gd" type="Script" id=2]
+[ext_resource path="res://MainUI/ToolBar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://MainUI/MainUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/png/collapse.png" type="Texture" id=5]
+[ext_resource path="res://Assets/png/plus.png" type="Texture" id=6]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 7.0
+content_margin_right = 8.0
+content_margin_top = 3.0
+bg_color = Color( 1, 0.823529, 0.968627, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_top = 17.0
+content_margin_bottom = 17.0
+bg_color = Color( 1, 0.823529, 0.968627, 1 )
+border_width_left = 2
+border_width_top = 7
+border_width_right = 11
+border_width_bottom = 7
+border_color = Color( 1, 0.823529, 0.968627, 1 )
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_detail = 25
+expand_margin_left = 6.0
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_top = 17.0
+content_margin_bottom = 17.0
+bg_color = Color( 1, 0.823529, 0.968627, 1 )
+border_width_left = 2
+border_width_top = 7
+border_width_right = 11
+border_width_bottom = 7
+border_color = Color( 1, 0.823529, 0.968627, 1 )
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_detail = 25
+expand_margin_left = 6.0
+
+[sub_resource type="Animation" id=4]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("ScreenShade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.254902 ) ]
+}
+
+[node name="WritingSpace" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Container" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+custom_constants/separation = 0
+
+[node name="ToolBar" parent="Container" instance=ExtResource( 3 )]
+anchor_right = 0.0
+margin_right = 1216.0
+margin_bottom = 50.0
+
+[node name="MainUI" parent="Container" instance=ExtResource( 4 )]
+anchor_right = 0.0
+margin_top = 50.0
+margin_right = 1216.0
+margin_bottom = 93.0
+
+[node name="Space" type="HSplitContainer" parent="Container"]
+margin_top = 93.0
+margin_right = 1216.0
+margin_bottom = 816.0
+mouse_filter = 1
+size_flags_vertical = 3
+split_offset = -300
+
+[node name="TreeView" type="HBoxContainer" parent="Container/Space"]
+margin_right = 302.0
+margin_bottom = 723.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Tree" type="Tree" parent="Container/Space/TreeView"]
+margin_right = 276.0
+margin_bottom = 723.0
+size_flags_horizontal = 3
+custom_styles/bg_focus = SubResource( 1 )
+custom_styles/bg = SubResource( 1 )
+custom_constants/item_margin = 10
+allow_reselect = true
+allow_rmb_select = true
+hide_root = true
+
+[node name="Popup" type="PopupMenu" parent="Container/Space/TreeView/Tree"]
+margin_right = 20.0
+margin_bottom = 20.0
+items = [ "Rename", null, 0, false, false, 0, 0, null, "", false, "Add Child", null, 0, false, false, 1, 0, null, "", false, "Add Sibling", null, 0, false, false, 2, 0, null, "", false, "Change to", null, 0, false, false, 3, 0, null, "", false, "Delete", null, 0, false, false, 4, 0, null, "", false ]
+submenu_popup_delay = 0.1
+
+[node name="Collapse" type="Button" parent="Container/Space/TreeView"]
+margin_left = 280.0
+margin_right = 302.0
+margin_bottom = 57.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+size_flags_vertical = 0
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+custom_constants/hseparation = 0
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+icon = ExtResource( 5 )
+
+[node name="TabMargin" type="MarginContainer" parent="Container/Space"]
+margin_left = 314.0
+margin_right = 1216.0
+margin_bottom = 723.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 15
+custom_constants/margin_bottom = 15
+
+[node name="TabContainer" type="TabContainer" parent="Container/Space/TabMargin"]
+margin_right = 887.0
+margin_bottom = 708.0
+size_flags_horizontal = 3
+drag_to_rearrange_enabled = true
+
+[node name="ScreenShade" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0 )
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -124.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Add_Item" type="MenuButton" parent="HBoxContainer"]
+margin_right = 1216.0
+margin_bottom = 50.0
+shortcut_in_tooltip = false
+icon = ExtResource( 6 )
+items = [ "Simple", null, 0, false, false, 0, 0, null, "", false, "Checkbox", null, 0, false, false, 1, 0, null, "", false, "Icon", null, 0, false, false, 2, 0, null, "", false ]
+switch_on_hover = true
+
+[node name="Namebox" type="LineEdit" parent="HBoxContainer"]
+visible = false
+margin_top = 54.0
+margin_right = 1216.0
+margin_bottom = 79.0
+max_length = 50
+placeholder_text = "Tab Name"
+caret_blink = true
+
+[node name="Confirm" type="Button" parent="HBoxContainer"]
+visible = false
+margin_top = 54.0
+margin_right = 1216.0
+margin_bottom = 95.0
+text = "OK"
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+anims/ScreenShade = SubResource( 4 )
+[connection signal="dragged" from="Container/Space" to="." method="_on_Space_dragged"]
+[connection signal="cell_selected" from="Container/Space/TreeView/Tree" to="." method="_on_Tree_cell_selected"]
+[connection signal="item_rmb_selected" from="Container/Space/TreeView/Tree" to="." method="_on_Tree_item_rmb_selected"]
+[connection signal="id_pressed" from="Container/Space/TreeView/Tree/Popup" to="." method="_on_Popup_id_pressed"]
+[connection signal="toggled" from="Container/Space/TreeView/Collapse" to="." method="_on_Collapse_toggled"]
+[connection signal="tab_changed" from="Container/Space/TabMargin/TabContainer" to="." method="_on_TabContainer_tab_changed"]
+[connection signal="pressed" from="HBoxContainer/Confirm" to="." method="_on_Confirm_pressed"]

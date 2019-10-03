@@ -28,10 +28,6 @@ GLOBAL="*res://GLOBAL.gd"
 [debug]
 
 gdscript/completion/autocomplete_setters_and_getters=true
-gdscript/warnings/unsafe_property_access=true
-gdscript/warnings/unsafe_method_access=true
-gdscript/warnings/unsafe_cast=true
-gdscript/warnings/unsafe_call_argument=true
 
 [display]
 
@@ -47,7 +43,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "notes_tab", "sprite_quick_offset" )
+enabled=PoolStringArray( "sprite_quick_offset" )
 
 [gui]
 

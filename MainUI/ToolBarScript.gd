@@ -11,6 +11,7 @@ func _ready():
 	_update_window_title()
 	$AnimationPlayer.play("Toolbar")
 
+# warning-ignore:unused_argument
 func _process(delta):
 	
 	if following:
