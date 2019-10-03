@@ -1,4 +1,4 @@
-extends Control
+extends TreeItem
 
 var dosis_tree = "res://Assets/themes/Dosis_Tree.tres"
 
@@ -7,7 +7,7 @@ func get_drag_data(pos):
 	# Use a label as drag preview
 	var prev = Label.new()
 	prev.font = load(dosis_tree)
-#	prev.text = get_text()
+	prev.text = get_text(0)
 	
 	set_drag_preview(prev)
 	

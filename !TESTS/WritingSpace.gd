@@ -94,7 +94,7 @@ func _on_AddItem_pressed(id):
 	new_tab = tabbed_space.get_current_tab_control()
 	
 	#Attaching Drag-n-Drop Script to new_item
-	new_item.set_script(tree_item_script)
+	new_item.set_script(load(tree_item_script))
 	
 	#Checking ID
 	match id:

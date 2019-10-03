@@ -29,7 +29,68 @@ anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
-[node name="TextEdit" type="TextEdit" parent="."]
+[node name="Env" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Buttons" type="HBoxContainer" parent="Env"]
+margin_right = 1216.0
+margin_bottom = 41.0
+alignment = 2
+
+[node name="size" type="SpinBox" parent="Env/Buttons"]
+margin_left = 783.0
+margin_right = 855.0
+margin_bottom = 41.0
+min_value = 1.0
+max_value = 200.0
+value = 20.0
+rounded = true
+
+[node name="save" type="Button" parent="Env/Buttons"]
+margin_left = 859.0
+margin_right = 909.0
+margin_bottom = 41.0
+disabled = true
+text = "SAVE"
+
+[node name="image" type="Button" parent="Env/Buttons" groups=[
+"edition_buttons",
+]]
+margin_left = 913.0
+margin_right = 1003.0
+margin_bottom = 41.0
+disabled = true
+text = "ADD IMAGE"
+
+[node name="bold" type="Button" parent="Env/Buttons" groups=[
+"edition_buttons",
+]]
+margin_left = 1007.0
+margin_right = 1061.0
+margin_bottom = 41.0
+disabled = true
+text = "BOLD"
+
+[node name="italic" type="Button" parent="Env/Buttons" groups=[
+"edition_buttons",
+]]
+margin_left = 1065.0
+margin_right = 1123.0
+margin_bottom = 41.0
+disabled = true
+text = "ITALIC"
+
+[node name="underline" type="Button" parent="Env/Buttons" groups=[
+"edition_buttons",
+]]
+margin_left = 1127.0
+margin_right = 1216.0
+margin_bottom = 41.0
+disabled = true
+text = "UNDERLINE"
+
+[node name="TextEdit" type="TextEdit" parent="Env"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -45,13 +106,10 @@ wrap_enabled = true
 caret_blink = true
 caret_blink_speed = 0.42
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 35.0
-margin_top = 42.0
-margin_right = -38.0
-margin_bottom = -80.0
+[node name="RichText" type="RichTextLabel" parent="Env"]
+margin_top = 45.0
+margin_right = 1216.0
+margin_bottom = 45.0
 custom_fonts/mono_font = SubResource( 1 )
 custom_fonts/bold_italics_font = SubResource( 2 )
 custom_fonts/italics_font = SubResource( 3 )
@@ -62,64 +120,6 @@ bbcode_enabled = true
 bbcode_text = "Default"
 meta_underlined = false
 text = "Default"
-
-[node name="save" type="Button" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -58.0
-margin_top = 6.0
-margin_right = -6.0
-margin_bottom = 47.0
-disabled = true
-text = "SAVE"
-
-[node name="image" type="Button" parent="." groups=[
-"edition_buttons",
-]]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -156.0
-margin_top = 6.0
-margin_right = -66.0
-margin_bottom = 47.0
-disabled = true
-text = "ADD IMAGE"
-
-[node name="bold" type="Button" parent="." groups=[
-"edition_buttons",
-]]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -456.0
-margin_top = 6.0
-margin_right = -366.0
-margin_bottom = 47.0
-disabled = true
-text = "BOLD"
-
-[node name="italic" type="Button" parent="." groups=[
-"edition_buttons",
-]]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -356.0
-margin_top = 6.0
-margin_right = -266.0
-margin_bottom = 47.0
-disabled = true
-text = "ITALIC"
-
-[node name="underline" type="Button" parent="." groups=[
-"edition_buttons",
-]]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -256.0
-margin_top = 6.0
-margin_right = -166.0
-margin_bottom = 47.0
-disabled = true
-text = "UNDERLINE"
 
 [node name="FileDialog" type="FileDialog" parent="."]
 anchor_left = 0.5
@@ -132,21 +132,11 @@ margin_right = 506.0
 margin_bottom = 259.0
 window_title = "Open a File"
 mode = 0
-
-[node name="SpinBox" type="SpinBox" parent="."]
-margin_left = 667.895
-margin_top = 14.5754
-margin_right = 739.895
-margin_bottom = 39.5754
-min_value = 1.0
-max_value = 200.0
-value = 20.0
-rounded = true
-[connection signal="gui_input" from="RichTextLabel" to="." method="_on_RichTextLabel_gui_input"]
-[connection signal="pressed" from="save" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="image" to="." method="_on_Button2_pressed"]
-[connection signal="pressed" from="bold" to="." method="_on_bold_pressed"]
-[connection signal="pressed" from="italic" to="." method="_on_italic_pressed"]
-[connection signal="pressed" from="underline" to="." method="_on_underline_pressed"]
+[connection signal="value_changed" from="Env/Buttons/size" to="." method="_on_size_value_changed"]
+[connection signal="pressed" from="Env/Buttons/save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Env/Buttons/image" to="." method="_on_image_pressed"]
+[connection signal="pressed" from="Env/Buttons/bold" to="." method="_on_bold_pressed"]
+[connection signal="pressed" from="Env/Buttons/italic" to="." method="_on_italic_pressed"]
+[connection signal="pressed" from="Env/Buttons/underline" to="." method="_on_underline_pressed"]
+[connection signal="gui_input" from="Env/RichText" to="." method="_on_RichText_gui_input"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
-[connection signal="value_changed" from="SpinBox" to="." method="_on_SpinBox_value_changed"]
