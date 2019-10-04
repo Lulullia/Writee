@@ -1,27 +1,28 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/themes/Pink_Theme.tres" type="Theme" id=1]
 [ext_resource path="res://WritingEnvironment/Write_Environment.gd" type="Script" id=2]
-[ext_resource path="res://Assets/fonts/Crushed-Regular.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Assets/fonts/Slopes.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://Assets/fonts/Dosis-ExtraLight.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://Assets/fonts/Dosis-Regular.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://Assets/fonts/Dosis-Light.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Assets/png/scrollVertical.png" type="Texture" id=3]
+[ext_resource path="res://Assets/fonts/Crushed-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/fonts/Slopes.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Assets/fonts/Dosis-ExtraLight.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Assets/fonts/Dosis-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Assets/fonts/Dosis-Light.ttf" type="DynamicFontData" id=8]
 
 [sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 8 )
 
 [node name="Write_Environment" type="Control"]
 anchor_right = 1.0
@@ -42,6 +43,7 @@ alignment = 2
 margin_left = 783.0
 margin_right = 855.0
 margin_bottom = 41.0
+custom_icons/updown = ExtResource( 3 )
 min_value = 1.0
 max_value = 200.0
 value = 20.0
@@ -99,6 +101,9 @@ margin_top = 30.0
 margin_right = -30.0
 margin_bottom = -70.0
 focus_mode = 1
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
 highlight_current_line = true
 override_selected_font_color = true
 smooth_scrolling = true
@@ -109,7 +114,10 @@ caret_blink_speed = 0.42
 [node name="RichText" type="RichTextLabel" parent="Env"]
 margin_top = 45.0
 margin_right = 1216.0
-margin_bottom = 45.0
+margin_bottom = 816.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_fonts/mono_font = SubResource( 1 )
 custom_fonts/bold_italics_font = SubResource( 2 )
 custom_fonts/italics_font = SubResource( 3 )
@@ -130,6 +138,7 @@ margin_left = -505.0
 margin_top = -331.0
 margin_right = 506.0
 margin_bottom = 259.0
+mouse_filter = 1
 window_title = "Open a File"
 mode = 0
 [connection signal="value_changed" from="Env/Buttons/size" to="." method="_on_size_value_changed"]

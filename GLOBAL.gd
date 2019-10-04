@@ -17,13 +17,14 @@ var text
 #Init
 func _ready():
 	
-	var system = File.new()
-	system.open("D:/Nora/Documents/system.wrt", 1)
-#	previous_filename = parse_json(system.get_line())
-#	previous_filepath = parse_json(system.get_line())
-	system.close()
-	print(previous_filename)
-	print(previous_filepath)
+	Input.set_custom_mouse_cursor(load("res://Assets/png/cursor_pointerFlat.png"), Input.CURSOR_DRAG)
+	Input.set_custom_mouse_cursor(load("res://Assets/png/cursor_pointerFlat.png"), Input.CURSOR_CAN_DROP)
+	
+#	var system = File.new()
+#	system.open("D:/Nora/Documents/system.wrt", 1)
+##	previous_filename = parse_json(system.get_line())
+##	previous_filepath = parse_json(system.get_line())
+#	system.close()
 
 #Input
 #func _input(event):

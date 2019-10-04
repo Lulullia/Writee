@@ -93,9 +93,6 @@ func _on_AddItem_pressed(id):
 	set_current_tab(tab_index)
 	new_tab = tabbed_space.get_current_tab_control()
 	
-	#Attaching Drag-n-Drop Script to new_item
-	new_item.set_script(load(tree_item_script))
-	
 	#Checking ID
 	match id:
 		0: #Simple
@@ -119,8 +116,8 @@ func _on_AddItem_pressed(id):
 	
 	is_tab_referenced = true
 	
+	print("Adding Item")
 	print(scenes_ref)
-	print(scenes)
 
 #Confirm Name
 func _on_Confirm_pressed():
@@ -184,6 +181,13 @@ func _on_Popup_id_pressed(ID):
 			pass
 		4: #Delete
 			pass
+
+#Updating Ref when dropping
+func _on_Tree_treeitem_dropped(item):
+	scenes_ref[item.get_metadata(0)] = item
+	print("Updating Ref")
+	print(scenes_ref)
+
 
 
 
