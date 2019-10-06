@@ -5,14 +5,27 @@ extends Node
 ###VARIABLES###
 ###############
 
-#var app_name = "Writee"
+###VARIABLES###
 
+#File
 var current_filename = "Untitled" setget set_current_filename, get_current_filename
 var current_filepath setget set_current_filename, get_current_filepath
 
 var previous_filename = []
 var previous_filepath = []
+
+#Utils
+var generated_ids = [] #Array of all generated UniqueIDs
+var pairs_obj_id = {} #Reference of the object by its UniqueID [id:obj]
+var randomizer = RandomNumberGenerator.new()
+
+#Data
 var text
+
+
+###############
+###FUNCTIONS###
+###############
 
 #Init
 func _ready():
@@ -32,6 +45,44 @@ func _ready():
 #	if event is InputEventKey:
 #		if event.pressed && event.scancode == 83 && Input.is_action_pressed("save"):
 #			_save(false)
+	pass
+
+
+#Generating IDs
+func _generate_id(object):
+	
+	randomize()
+	var id = randomizer.randi_range(0, 100000)
+
+	#Id is unique
+	while generated_ids.has(id):
+		id = randomizer.randi_range()
+	
+#	var id = generated_ids.back() + 1
+	
+	#Append new id to array
+	generated_ids.append(id)
+	generated_ids.sort()
+	
+	#Reference the newly generated ID with its object
+	pairs_obj_id[id] = object
+	
+	#Debug#
+	print("--New ID Generated--")
+	print(str(id) + " : " + str(object))
+	#######
+	
+	return id
+
+#Updating ID
+func _update_id(id, object):
+	pairs_obj_id[id] = object
+
+#Deleting IDs
+func _delete_id(id):
+	generated_ids.erase(id)
+	generated_ids.sort()
+	pairs_obj_id.erase(id)
 
 #Saving
 func _save(quitting):

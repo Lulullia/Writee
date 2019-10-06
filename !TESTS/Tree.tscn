@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/themes/Pink_Theme.tres" type="Theme" id=1]
+[ext_resource path="res://!TESTS/Tree.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 7.0
+content_margin_right = 8.0
+content_margin_top = 3.0
+bg_color = Color( 1, 0.823529, 0.968627, 1 )
+
+[node name="Tree" type="Tree"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+theme = ExtResource( 1 )
+custom_styles/bg_focus = SubResource( 1 )
+custom_styles/bg = SubResource( 1 )
+custom_constants/item_margin = 10
+allow_reselect = true
+allow_rmb_select = true
+hide_root = true
+script = ExtResource( 2 )
+
+[node name="Popup" type="PopupMenu" parent="."]
+margin_right = 20.0
+margin_bottom = 20.0
+items = [ "Rename", null, 0, false, false, 0, 0, null, "", false, "Add Child", null, 0, false, false, 1, 0, null, "", false, "Add Sibling", null, 0, false, false, 2, 0, null, "", false, "Change to", null, 0, false, false, 3, 0, null, "", false, "Delete", null, 0, false, false, 4, 0, null, "", false ]
+submenu_popup_delay = 0.1

@@ -47,7 +47,7 @@ enabled=PoolStringArray( "sprite_quick_offset" )
 
 [gui]
 
-timers/text_edit_idle_detect_sec=4.98
+timers/text_edit_idle_detect_sec=5.15
 timers/tooltip_delay_sec=1.02
 
 [input]

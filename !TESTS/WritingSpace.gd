@@ -4,6 +4,7 @@ extends Control
 ###SIGNALS###
 #############
 
+signal namebox_button_pressed
 
 ###############
 ###VARIABLES###
@@ -11,22 +12,25 @@ extends Control
 
 ###ONREADY###
 
-onready var space = get_node("Container/Space")
+#Containers
+onready var space = get_node("Space")
 #onready var tree_view = get_node("Container/Space/TreeView")
-onready var tabbed_space = get_node("Container/Space/TabMargin/TabContainer")
+onready var tabbed_space = get_node("Space/TabMargin/TabContainer")
+onready var text_input = get_node("TextInput")
 
-onready var tree = get_node("Container/Space/TreeView/Tree")
-onready var tree_popup = get_node("Container/Space/TreeView/Tree/Popup")
+#Nodes
+onready var tree = get_node("Space/TreeView/Tree")
 
-onready var add_item_button = get_node("HBoxContainer/Add_Item")
-onready var tree_collapse_button = get_node("Container/Space/TreeView/Collapse")
-onready var namebox = get_node("HBoxContainer/Namebox")
-onready var namebox_confirm = get_node("HBoxContainer/Confirm")
+#Buttons
+onready var add_item_button = get_node("Add_Item")
+onready var tree_collapse_button = get_node("Space/TreeView/Collapse")
+
+onready var namebox = get_node("TextInput/Namebox")
+#onready var namebox_buttons = get_node("TextInput/Buttons")
 
 ###PRELOAD###
 
 var writing_tab = "res://!TESTS/Writing_Tabs.tscn"
-var tree_item_script = "res://!TESTS/Tree_DropData.gd"
 
 var tree_collapse_icon = [preload("res://Assets/png/collapse.png"),
 							preload("res://Assets/png/collapsed.png")]
@@ -43,11 +47,7 @@ var is_tab_referenced = false
 ###############
 
 func _ready():
-	#Init Tree
-	var root = tree.create_item()
-	root.set_cell_mode(0, TreeItem.CELL_MODE_STRING)
-	
-	#Add Item Button Signal Connecting
+	#Add_Item_Button Signal Connecting
 	add_item_button.get_popup().connect("id_pressed", self, "_on_AddItem_pressed")
 
 func set_current_tab(id):
@@ -58,6 +58,15 @@ func save_text(tab): #Saving tab's text
 	scenes[tab] = tab.get_scene_text()
 	GLOBAL.text = scenes
 
+func _show_hide_namebox(what): #Showing & Hiding namebox
+	if what: #Show
+		$Anim.play("ScreenShade")
+		text_input.set_visible(true)
+		namebox.grab_focus()
+	else: #Hide
+		$Anim.play_backwards("ScreenShade")
+		text_input.set_visible(false)
+
 ######################
 ###SIGNAL FUNCTIONS###
 ######################
@@ -65,66 +74,67 @@ func save_text(tab): #Saving tab's text
 #Adding Item
 func _on_AddItem_pressed(id):
 	
-	#Variables
-	var new_item
-	var new_item_name
-	var new_tab = load(writing_tab).instance()
-	var tab_index = tabbed_space.get_tab_count()
-	
 	#Showing Namebox
-	$Anim.play("ScreenShade")
-	namebox.set_visible(true)
-	namebox_confirm.set_visible(true)
+	_show_hide_namebox(true)
+	add_item_button.set_disabled(true)
 	
-	#When Confirm is pressed
-	while true:
-		yield(namebox_confirm, "pressed")
-		if namebox.get_text() != "" || namebox.get_text() != " ":
-			break
-	new_item_name = namebox.get_text()
-	namebox.clear()
+	#When a button is pressed
+	var action = yield(self, "namebox_button_pressed")
 	
-	#Creating Item
-	if tree.get_selected():
-		new_item = tree.create_item(tree.get_selected())
-	else:
-		new_item = tree.create_item()
-	tabbed_space.add_child(new_tab, true)
-	set_current_tab(tab_index)
-	new_tab = tabbed_space.get_current_tab_control()
+	if action: #Confirm pressed
+		
+		#Variables
+		var new_item
+		var new_item_name
+		var new_tab = load(writing_tab).instance()
+		var tab_index = tabbed_space.get_tab_count()
+		
+		#Getting name
+		new_item_name = namebox.get_text()
+		namebox.clear()
+		
+		#Creating Item
+		if new_item_name == null || new_item_name == "" || new_item_name == " ":
+			new_item = tree._create_item(null, -1, id, "New Scene")
+		else: #Namebox isn't empty
+			new_item = tree._create_item(null, -1, id, new_item_name)
+		
+		#Creating Tab
+		tabbed_space.add_child(new_tab, true)
+		set_current_tab(tab_index)
+		new_tab = tabbed_space.get_current_tab_control()
+		tabbed_space.set_tab_title(tab_index, new_item_name)
+		new_tab.connect("wanna_save", self, "save_text")
+		
+		#Referencing
+		var sync_id = GLOBAL._generate_id([new_item, new_tab])
+		new_item.set_meta("SyncID", sync_id)
+		new_tab.set_meta("SyncID", sync_id)
+		
+		scenes_ref[new_tab] = new_item
+		save_text(new_tab)
+		
+		is_tab_referenced = true
+		
+		add_item_button.set_disabled(false)
+		
+		#Debug
+		print("--Adding Item & Tab--")
+		print("-New Item & New Tab")
+		print([new_item, new_tab])
+		print("-Sync ID")
+		print(sync_id)
 	
-	#Checking ID
-	match id:
-		0: #Simple
-			new_item.set_cell_mode(0, TreeItem.CELL_MODE_STRING)
-		1: #Checkbox
-			new_item.set_cell_mode(0, TreeItem.CELL_MODE_CHECK)
-		2: #Icon
-			new_item.set_cell_mode(0, TreeItem.CELL_MODE_CUSTOM)
-	
-	#Setting Text
-	new_item.set_text(0, " " + new_item_name)
-	tabbed_space.set_tab_title(tab_index, new_item_name)
-	
-	#Connecting Saving Signal
-	new_tab.connect("wanna_save", self, "save_text")
-	
-	#Referencing
-	new_item.set_metadata(0, new_tab)
-	scenes_ref[new_tab] = new_item
-	save_text(new_tab)
-	
-	is_tab_referenced = true
-	
-	print("Adding Item")
-	print(scenes_ref)
+	else: #Cancel pressed
+		add_item_button.set_disabled(false)
 
-#Confirm Name
+#TextInput Buttons
 func _on_Confirm_pressed():
-	if namebox.get_text() != "" || namebox.get_text() != " ":
-		$Anim.play_backwards("ScreenShade")
-		namebox.set_visible(false)
-		namebox_confirm.set_visible(false)
+	_show_hide_namebox(false)
+	emit_signal("namebox_button_pressed", true)
+func _on_Cancel_pressed():
+	_show_hide_namebox(false)
+	emit_signal("namebox_button_pressed", false)
 
 #Clamp Dragging
 func _on_Space_dragged(offset):
@@ -150,54 +160,22 @@ func _on_Collapse_toggled(button_pressed):
 #Cell & Tab Selection Syncing
 func _on_Tree_cell_selected():
 	var cell = tree.get_selected()
-	var tab = cell.get_metadata(0)
+	var tab = GLOBAL.pairs_obj_id[cell.get_meta("SyncID")]
+	tab = tab[1]
 	tabbed_space.set_current_tab(tab.get_index())
 # warning-ignore:unused_argument
-func _on_TabContainer_tab_changed(s_tab):
+func _on_TabContainer_tab_changed(_tab):
 	if !is_tab_referenced:
 		pass
 	else:
 		var tab = tabbed_space.get_current_tab_control()
-		var cell = scenes_ref[tab]
+		var sync_id = tab.get_meta("SyncID")
+		var cell = GLOBAL.pairs_obj_id[sync_id]
+		cell = cell[0]
 		cell.select(0)
 		tree.ensure_cursor_is_visible()
-
-#Tree Right-Click Menu
-# warning-ignore:unused_argument
-func _on_Tree_item_rmb_selected(position):
-	var pos = Rect2(get_global_mouse_position(), Vector2(50, 50))
-	tree_popup.popup(pos)
-
-func _on_Popup_id_pressed(ID):
-	
-	match ID:
-		0: #Rename
-			pass
-		1: #Add Child
-			pass
-		2: #Add Sibling
-			pass
-		3: #Change to
-			pass
-		4: #Delete
-			pass
 
 #Updating Ref when dropping
 func _on_Tree_treeitem_dropped(item):
 	scenes_ref[item.get_metadata(0)] = item
-	print("Updating Ref")
-	print(scenes_ref)
-
-
-
-
-
-
-
-
-
-
-
-
-
 
