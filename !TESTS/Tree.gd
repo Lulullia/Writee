@@ -243,7 +243,7 @@ func _add_childs(item, childs):
 		
 		var current_child = hierarchy[idx]
 		current_child = current_child[0]
-		var 
+		var s
 	
 
 #Updating tree_data

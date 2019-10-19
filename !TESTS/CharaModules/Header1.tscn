@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/themes/Pink_Theme.tres" type="Theme" id=1]
+[ext_resource path="res://!TESTS/CharaModules/Header1.gd" type="Script" id=2]
+[ext_resource path="res://Assets/themes/CM_H1.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/png/gear2.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 0.823529, 0.968627, 0.207843 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 10
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 0.823529, 0.968627, 0.407843 )
+draw_center = false
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 10
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[node name="Header1" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -408.0
+margin_bottom = -256.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="HC" type="HBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = 25.0
+margin_right = -25.0
+margin_bottom = -25.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 15
+
+[node name="LineEdit" type="LineEdit" parent="Panel/HC"]
+margin_right = 1101.0
+margin_bottom = 101.0
+mouse_filter = 1
+size_flags_horizontal = 3
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 2 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+placeholder_text = "Header"
+caret_blink = true
+
+[node name="Options" type="MenuButton" parent="Panel/HC"]
+self_modulate = Color( 0.290196, 0.290196, 0.290196, 1 )
+margin_left = 1116.0
+margin_right = 1166.0
+margin_bottom = 101.0
+mouse_filter = 1
+shortcut_in_tooltip = false
+icon = ExtResource( 4 )
+items = [ "Delete", null, 0, false, false, 0, 0, null, "", false ]
+[connection signal="mouse_entered" from="Panel" to="." method="_on_Panel_mouse_entered"]
+[connection signal="mouse_exited" from="Panel" to="." method="_on_Panel_mouse_exited"]
+[connection signal="focus_entered" from="Panel/HC/LineEdit" to="." method="_on_LineEdit_focus_entered"]
+[connection signal="text_entered" from="Panel/HC/LineEdit" to="." method="_on_LineEdit_text_entered"]
