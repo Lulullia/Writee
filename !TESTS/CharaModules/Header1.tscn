@@ -5,7 +5,7 @@
 [ext_resource path="res://Assets/themes/CM_H1.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Assets/png/gear2.png" type="Texture" id=4]
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 0.823529, 0.968627, 0.207843 )
 corner_radius_top_left = 20
 corner_radius_top_right = 20
@@ -58,7 +58,7 @@ margin_right = 1101.0
 margin_bottom = 101.0
 mouse_filter = 1
 size_flags_horizontal = 3
-custom_styles/focus = SubResource( 3 )
+custom_styles/focus = SubResource( 1 )
 custom_styles/normal = SubResource( 2 )
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
