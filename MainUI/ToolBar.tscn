@@ -194,7 +194,7 @@ custom_constants/separation = 40
 
 [node name="DocTitle" type="Label" parent="."]
 margin_left = 212.0
-margin_right = 787.0
+margin_right = 1011.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 rect_pivot_offset = Vector2( 46, 20 )
@@ -208,16 +208,16 @@ valign = 1
 max_lines_visible = 1
 
 [node name="VSeparator4" type="VSeparator" parent="."]
-margin_left = 791.0
-margin_right = 1091.0
+margin_left = 1015.0
+margin_right = 1315.0
 margin_bottom = 50.0
 mouse_filter = 1
 custom_styles/separator = SubResource( 2 )
 custom_constants/separation = 300
 
 [node name="Minimize" type="ToolButton" parent="."]
-margin_left = 1095.0
-margin_right = 1125.0
+margin_left = 1319.0
+margin_right = 1349.0
 margin_bottom = 50.0
 rect_pivot_offset = Vector2( 15, 25 )
 focus_mode = 0
@@ -229,16 +229,16 @@ icon = ExtResource( 4 )
 clip_text = true
 
 [node name="VSeparator3" type="VSeparator" parent="."]
-margin_left = 1129.0
-margin_right = 1130.0
+margin_left = 1353.0
+margin_right = 1354.0
 margin_bottom = 50.0
 mouse_filter = 1
 custom_styles/separator = SubResource( 2 )
 custom_constants/separation = 1
 
 [node name="Fullscreen" type="ToolButton" parent="."]
-margin_left = 1134.0
-margin_right = 1164.0
+margin_left = 1358.0
+margin_right = 1388.0
 margin_bottom = 50.0
 rect_pivot_offset = Vector2( 15, 25 )
 focus_mode = 0
@@ -251,8 +251,8 @@ icon = ExtResource( 5 )
 clip_text = true
 
 [node name="VSeparator2" type="VSeparator" parent="."]
-margin_left = 1168.0
-margin_right = 1169.0
+margin_left = 1392.0
+margin_right = 1393.0
 margin_bottom = 50.0
 mouse_filter = 1
 custom_styles/separator = SubResource( 2 )
@@ -260,8 +260,8 @@ custom_constants/separation = 1
 
 [node name="Close" type="ToolButton" parent="."]
 editor/display_folded = true
-margin_left = 1173.0
-margin_right = 1203.0
+margin_left = 1397.0
+margin_right = 1427.0
 margin_bottom = 50.0
 rect_pivot_offset = Vector2( 15, 25 )
 focus_mode = 0
@@ -368,8 +368,8 @@ align = 1
 valign = 1
 
 [node name="VSeparator" type="VSeparator" parent="."]
-margin_left = 1207.0
-margin_right = 1216.0
+margin_left = 1431.0
+margin_right = 1440.0
 margin_bottom = 50.0
 mouse_filter = 1
 custom_styles/separator = SubResource( 2 )

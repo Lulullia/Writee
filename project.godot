@@ -31,8 +31,8 @@ gdscript/completion/autocomplete_setters_and_getters=true
 
 [display]
 
-window/size/width=1216
-window/size/height=816
+window/size/width=1440
+window/size/height=810
 window/size/resizable=false
 window/size/borderless=true
 window/energy_saving/keep_screen_on=false

@@ -54,8 +54,8 @@ size_flags_vertical = 3
 custom_constants/separation = 15
 
 [node name="LineEdit" type="LineEdit" parent="Panel/HC"]
-margin_right = 1101.0
-margin_bottom = 101.0
+margin_right = 1325.0
+margin_bottom = 102.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_styles/focus = SubResource( 1 )
@@ -68,9 +68,9 @@ caret_blink = true
 
 [node name="Options" type="MenuButton" parent="Panel/HC"]
 self_modulate = Color( 0.290196, 0.290196, 0.290196, 1 )
-margin_left = 1116.0
-margin_right = 1166.0
-margin_bottom = 101.0
+margin_left = 1340.0
+margin_right = 1390.0
+margin_bottom = 102.0
 mouse_filter = 1
 shortcut_in_tooltip = false
 icon = ExtResource( 4 )

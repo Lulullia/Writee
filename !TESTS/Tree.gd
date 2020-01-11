@@ -40,13 +40,13 @@ func _ready():
 	tree_data["Root"] = root.get_meta("UniqueID")
 	
 	#Debug#
-	var par = _create_item()
-	_create_item()
-	_create_item(par)
-	var par2 = _create_item(par)
-	_create_item(par2)
-	var par3 = _create_item(par2)
-	_create_item(par3)
+#	var par = _create_item()
+#	_create_item()
+#	_create_item(par)
+#	var par2 = _create_item(par)
+#	_create_item(par2)
+#	var par3 = _create_item(par2)
+#	_create_item(par3)
 	#######
 	
 	_update_tree_data(0)
